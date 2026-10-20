@@ -1,7 +1,7 @@
 # Linux Lab Assignment
 
 Roll No 26223056 
-NameMd Monasshir
+NameMd Monasshir Firdoshi
 Subject  Operating Systems / Linux Lab 
 Due Date : 21-October-2026
 
