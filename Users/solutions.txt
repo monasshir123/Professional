@@ -1,0 +1,33 @@
+Q1's command partA:awk -F', ' '$1 ~ /^[A-Z][a-z]+ [A-Z][a-z]*h$/ {print $1}' users.txt
+Q1's command partB:awk -F',' '{print $3}' users.txt
+Q1's command partC:grep -oE '[0-9]{4} [0-9]{4} [0-9]{4} 1562' users.txt
+Q1's command partD:grep -oE '(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[0-2])-(199[9]|200[0-5])'$
+------------------------------------------------------------------------------------------------
+Q2's command:sed -n '15,20p' file.txt
+Q3's command:date +"%a %b %-d %r %Z %Y" 
+Q4's command:ls -lS /usr/bin/a* | head -3
+Q5's command(A):du -sh . 
+Q5's command(B):du -sk .   
+Q6's command(A):find . -type f -mtime -7
+Q6's command(B):find . -type f -mmin -120
+Q7's command:sed 's/ /\t/g' file.txt
+Q8's command(A):find . -type f -mtime -7
+Q8's command(B):find . -type f -mmin -120
+Q9's command:head -10 file.txt | wc -w
+Q10's command:cat CS100.txt
+Q11's command(A):touch add.c notes.pdf a.txt b.txt d$
+Q11's command(B):ls | grep -Ev '\.(pdf|txt)$'
+Q12's command(A):nano add.c
+Q12's command(B):gcc add.c -o add
+Q12's command(C):./add
+Q12's command(D):sed -i '' 's/float/int/g' add.c
+Q12's command(E):sed -i '' 's/%f/%d/g' add.c
+Q12's command(F):gcc add.c -o add
+Q12's command(F):./add
+Q13's command:date +"%m-%d-%y"
+Q14's command(A):cat *.txt > merge.txt
+Q14's command(B):ls *.txt
+Q15's command:du -h *.txt *.pdf
+Q16's command:grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){$,3}){3}' file.txt
+
+

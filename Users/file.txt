@@ -1,0 +1,22 @@
+Welcome! to my Assignment 
+Today I am learning shell commands
+Router address is 192.168.0.1
+Backup server runs on 10.10.10.5
+This line does not contain any address
+Consistent practice improves skills
+Office network gateway is 172.20.1.254
+Terminal work is quite interesting
+Public dns server is 1.1.1.1
+Tenth line ends the head section
+Broadcast address is 192.168.255.255
+Pipes and filters make work easy
+Loopback address is 127.0.0.1
+Wrong address written here is 300.20.10.5
+Fifteenth line begins the range
+Sixteenth line has a few extra words
+Printer is connected at 192.168.2.50
+Eighteenth line is short
+Nineteenth line comes before the end
+Twentieth line closes the range
+Another wrong address is 400.1.2.3
+Final line of my practice file

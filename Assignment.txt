@@ -1,0 +1,282 @@
+Q1: Assume you have a text file with many lines containing user details. 
+Each line has the 
+following format. 
+Name, Phone number, Email Address, Credit card number, Date of birth. The 
+format of each field is listed below. 
+Name: Contains First name followed by Last name (with 
+space separated). First and Last names start with capital letters followed by any number of 
+lower letter alphabets. 
+Phone number: It has 10 digits, in the format as (123) 456–8911 i.e (3 
+digits) (space) (3 digits) (hyphen) (4 digits). 
+Email Address: It has the format username@Domain. 
+The username should start with an alphabet (lower/upper) followed by any 
+number of alphabet or digits. Domain should use <string>. <string>. <string>, where strings 
+contain only lower Alphabets. 
+Credit Card Number: It has 16 digits in the below format <4 
+Digits><space><4 Digits><space><4 Digits><space><4 Digits> 
+Date of the birth: Uses the format 
+DD-MM-YYYY. Where DD should be in the range [1-31] and MM in the range [1-12] and YYYY in the 
+range [0000-9999]. 
+Given the above information, write linux commands for the each following that 
+--------------------------------------------------------------------------------------------
+command:mkdir Users (create a Folder)
+command:ls          (to show all repo/file)
+command:cd Users    (change Directory and enter User folder)
+command:nano user.txt (create a text file and write it message in order to given instruction).
+---------------------------------------------------------------------------------------------
+
+
+(1) Lists of all user first name and last time whose last name ends with letter ‘h’ 
+
+command:awk -F', ' '$1 ~ /^[A-Z][a-z]+ [A-Z][a-z]*h$/ {print $1}' users.txt
+
+O/P:Amit Singh
+    Anita Singh
+(2) Lists of email address of all the users
+command:awk -F',' '{print $3}' users.txt
+ 
+O/P:
+ umar123@gmail.com
+ amit45@yahoo.com
+ mdmf7@outlook.com
+ neha22@gmail.com
+ karan9@yahoo.com
+ sneha5@gmail.com
+ johne1@outlook.com
+ anita88@gmail.com
+
+
+(3) Lists of all the user credit cards whose credit cards ending with 1562 
+ 
+ command :grep -oE '[0-9]{4} [0-9]{4} [0-9]{4} 1562' users.txt
+ O/P:
+1234 5678 9012 1562
+3456 7890 1234 1562
+6789 0123 4567 1562
+
+(4) Dates of birth with year between 1999 and 2005
+command:grep -oE '(0?[1-9]|[12][0-9]|3[01])-(0?[1-9]|1[0-2])-(199[9]|200[0-5])' users.txt
+O/P:
+15-04-2001
+10-12-2005
+05-06-2003
+19-11-2000
+31-01-1999
+12-03-2004
+
+
+--------------------------------------------------------------
+
+Q2:Write a linux command that displays the contents of line 15-20 of a file.
+command: nano file.txt
+ -- Lines 15-20 of a file
+command: sed -n '15,20p' file.txt
+ 
+O/P:
+Fifteenth line begins the range
+Sixteenth line has a few extra words
+Printer is connected at 192.168.2.50
+Eighteenth line is short
+Nineteenth line comes before the end
+Twentieth line closes the range
+
+-----------------------------------------------------------
+
+Q3:Find out a way to format the bash date command to give the output as given below: 
+Tue Mar 5 09:58:21 PM IST 2019 .
+command:date +"%a %b %-d %r %Z %Y"
+O/P:Tue Oct 20 03:35:10 PM IST 2026
+
+-------------------------------------------------------------
+Q4:Write a single line command using pipes to find the 3 largest files beginning with “a”
+in the /usr/bin directory
+command:ls -lS /usr/bin/a* | head -3
+
+O/P:
+-rwxr-xr-x   1 root  wheel  3359648 Jul 17  2024 /usr/bin/assetutil
+-rwxr-xr-x   1 root  wheel   434032 Jul 17  2024 /usr/bin/auvaltool
+-rwxr-xr-x   1 root  wheel   360688 Jul 17  2024 /usr/bin/afconvert
+
+-----------------------------------------------------------------------
+
+
+Q5:Write a linux command to compute the disk usage of the current directory in 
+Gigabytes/Megabytes/Kilobytes?
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % du -sh .
+ 12K	.        {human readable(K/M/G)}
+mdmonasshirfirdousi@MDs-MacBook-Air Users % du -sk .
+12	.            {KB.         du -sm .    # MB}
+
+-----------------------------------------------------------------------
+
+Q6:Write the command to find all the files which have been modified in the last week. 
+What are the changes required to check for the files which are modified in the last 2 
+hours? .
+
+command & O/P:
+first Part;
+mdmonasshirfirdousi@MDs-MacBook-Air Users % find . -type f -mtime -7
+./file.txt
+./operating.txt
+./users.txt
+second Part:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % find . -type f -mmin -120
+./file.txt
+
+--------------------------------------------------------------------------
+
+Q7:Write a linux command to replace all the spaces with tab space in a file
+
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % sed 's/ /\t/g' file.txt
+Welcome!	to	my	Assignment	
+Today	I	am	learning	shell	commands
+Router	address	is	192.168.0.1
+Backup	server	runs	on	10.10.10.5
+This	line	does	not	contain	any	address
+Consistent	practice	improves	skills
+Office	network	gateway	is	172.20.1.254
+Terminal	work	is	quite	interesting
+Public	dns	server	is	1.1.1.1
+Tenth	line	ends	the	head	section
+Broadcast	address	is	192.168.255.255
+Pipes	and	filters	make	work	easy
+Loopback	address	is	127.0.0.1
+Wrong	address	written	here	is	300.20.10.5
+Fifteenth	line	begins	the	range
+Sixteenth	line	has	a	few	extra	words
+Printer	is	connected	at	192.168.2.50
+Eighteenth	line	is	short
+Nineteenth	line	comes	before	the	end
+Twentieth	line	closes	the	range
+Another	wrong	address	is	400.1.2.3
+Final	line	of	my	practice	file
+
+--------------------------------------------------------------------------
+Q8:Write the command to find all the files which have been modified in the last week. 
+What are the changes required to check for the files which are modified in the last 2 
+hours? .
+
+command & O/P:
+first Part;
+mdmonasshirfirdousi@MDs-MacBook-Air Users % find . -type f -mtime -7
+./file.txt
+second Part:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % find . -type f -mmin -120
+./file.txt
+--------------------------------------------------------------------------------------
+
+Q9:Write a linux command that prints the number of words in the first 10 lines of a given 
+input file (“file.txt”).
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % head -10 file.txt | wc -w
+      51
+
+----------------------------------------------------------------------------------------------
+Q10:Assume that you have a file CS100.txt, which contains several lines in the below 
+format
+RollNo, Grade
+RollNo has 8 digits, where each digit can be [0-9] 
+Grade: Can be any of A, B, C, D, E, F
+Write a linux command that prints the grade of a student whose roll number is given.
+
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % cat CS100.txt
+21000001, A
+21000002, B
+21000003, C
+21000004, D
+21000005, E
+21000006, F
+21000007, A
+21000008, B
+mdmonasshirfirdousi@MDs-MacBook-Air Users % grep -E '^21000003,' CS100.txt | cut -d',' -f2 | tr -d ' '
+C
+
+----------------------------------------------------------------------------------
+
+Q11:Write a linux command that list all the files in the current directory, except the files 
+ending wittouch add.c notes.pdf a.txt b.txh *.pdf or *.txt
+
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % touch add.c notes.pdf a.txt b.txt data.csv
+ls
+CS100.txt	add.c		data.csv	notes.pdf	solutions.txt
+a.txt		b.txt		file.txt	operating.txt	users.txt
+mdmonasshirfirdousi@MDs-MacBook-Air Users % ls | grep -Ev '\.(pdf|txt)$'
+add.c
+data.csv
+
+-----------------------------------------------------------------------------
+Q12:Write a simple c program (add.c) that declares 3 floating point variables a, b, and c. 
+Your program should initialize a and b to some values, compute c as a+b, and print 
+the value of c.
+Now, write two linux commands that replace float to int, and replace %f to %d in your 
+program. Ensure that your program should not give compilation errors after the
+replacement .
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % nano add.c
+mdmonasshirfirdousi@MDs-MacBook-Air Users % gcc add.c -o add         
+mdmonasshirfirdousi@MDs-MacBook-Air Users % ./add
+8.000000
+mdmonasshirfirdousi@MDs-MacBook-Air Users % sed -i '' 's/float/int/g' add.c
+sed -i '' 's/%f/%d/g' add.c
+mdmonasshirfirdousi@MDs-MacBook-Air Users % gcc add.c -o add               
+add.c:3:13: warning: implicit conversion from 'double' to 'int' changes value from 3.5 to 3 [-Wliteral-conversion]
+    int a = 3.5, b = 4.5, c;
+        ~   ^~~
+add.c:3:22: warning: implicit conversion from 'double' to 'int' changes value from 4.5 to 4 [-Wliteral-conversion]
+    int a = 3.5, b = 4.5, c;
+                 ~   ^~~
+2 warnings generated.
+mdmonasshirfirdousi@MDs-MacBook-Air Users % ./add  
+7
+
+-----------------------------------------------------------------------------------
+
+Q13:Write a linux command to display the date in mm-dd-yy format.
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % date +"%m-%d-%y"
+10-20-26
+
+------------------------------------------------------------------------------
+
+Q14:Write a linux command that concatenates the contents of all txt files in current 
+directory and saves the output to “merge.txt”
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % cat *.txt > merge.txt
+ls *.txt
+CS100.txt	b.txt		merge.txt	solutions.txt
+a.txt		file.txt	operating.txt	users.txt
+
+------------------------------------------------------------------------------
+Q15:Write a linux command that shows the disk usage of all the *.txt and *.pdf files in the 
+current directory.
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % du -h *.txt *.pdf
+4.0K	CS100.txt
+4.0K	a.txt
+4.0K	b.txt
+4.0K	file.txt
+4.0K	merge.txt
+4.0K	operating.txt
+4.0K	solutions.txt
+4.0K	users.txt
+  0B	notes.pdf
+---------------------------------------------------------------------------
+Q16:An ip address has the following format
+Number.Number.Number.Number where Number takes any value from 0 to 255. 
+Write a linux command that extracts all the ip addresses present in a file file.txt
+
+command & O/P:
+mdmonasshirfirdousi@MDs-MacBook-Air Users % grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}' file.txt
+192.168.0.1
+10.10.10.5
+172.20.1.254
+1.1.1.1
+192.168.255.255
+127.0.0.1
+300.20.10.5
+192.168.2.50
+400.1.2.3
